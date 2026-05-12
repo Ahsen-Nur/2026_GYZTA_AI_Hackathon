@@ -1,0 +1,34 @@
+[
+  {
+    "order_id": 1001,
+    "customer": "Ahsen Nur Aldaş",
+    "city": "İstanbul",
+    "product": "Logitech MX Master 3S",
+    "status": "Shipped",
+    "cargo_company": "Yurtiçi Kargo",
+    "tracking_number": "YK458921",
+    "estimated_delivery": "Tomorrow"
+  },
+
+  {
+    "order_id": 1002,
+    "customer": "Eda Nur Teklik",
+    "city": "Ankara",
+    "product": "Apple Magic Keyboard",
+    "status": "Preparing",
+    "cargo_company": "MNG Kargo",
+    "tracking_number": "MNG882144",
+    "estimated_delivery": "2 days"
+  },
+
+  {
+    "order_id": 1004,
+    "customer": "Şevval Demir",
+    "city": "Bursa",
+    "product": "Anker PowerCore 737",
+    "status": "Delayed",
+    "cargo_company": "Sürat Kargo",
+    "tracking_number": "SR771244",
+    "estimated_delivery": "Unknown"
+  }
+]

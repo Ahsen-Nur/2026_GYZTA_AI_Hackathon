@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI OPS</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <h1>AI OPS</h1>
+
+        <nav>
+
+            <a class="nav-item active"
+               onclick="showSection('dashboard')">
+               Dashboard
+            </a>
+
+            <a class="nav-item"
+               onclick="showSection('orders')">
+               Orders
+            </a>
+
+            <a class="nav-item"
+               onclick="showSection('inventory')">
+               Inventory
+            </a>
+
+            <a class="nav-item"
+               onclick="showSection('analytics')">
+               Analytics
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <main class="content">
+
+        <section id="dashboard-section">
+
+            <h1>Operations Dashboard</h1>
+
+            <div class="cards">
+
+                <div class="card gradient">
+                    <h3>Today's Orders</h3>
+                    <p id="total-orders"></p>
+                </div>
+
+                <div class="card">
+                    <h3>Delayed Shipments</h3>
+                    <p id="delayed-orders"></p>
+                </div>
+
+                <div class="card">
+                    <h3>Critical Stock</h3>
+                    <p id="critical-stock"></p>
+                </div>
+
+                <div class="card">
+                    <h3>Revenue</h3>
+                    <p id="revenue"></p>
+                </div>
+
+            </div>
+
+            <div class="layout">
+
+                <div class="orders-panel">
+
+                    <h2>Recent Orders</h2>
+
+                    <table>
+
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                            <th>City</th>
+                        </tr>
+                        </thead>
+
+                        <tbody id="orders-table"></tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="chat-panel">
+
+                    <h2>AI Assistant</h2>
+
+                    <div id="chat-box"></div>
+
+                    <div class="chat-input">
+
+                        <input id="message-input"
+                               placeholder="Ask AI assistant...">
+
+                        <button onclick="sendMessage()">
+                            Send
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="orders-section" class="hidden-section">
+
+            <h1>Orders Management</h1>
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+
+                <tbody id="orders-management-table"></tbody>
+
+            </table>
+
+        </section>
+
+        <section id="inventory-section" class="hidden-section">
+
+            <h1>Inventory Management</h1>
+
+            <table>
+
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+
+                <tbody id="inventory-table"></tbody>
+
+            </table>
+
+        </section>
+
+        <section id="analytics-section" class="hidden-section">
+
+            <h1>Analytics Dashboard</h1>
+
+            <div class="analytics-grid">
+
+                <div class="analytics-card">
+                    <h3>Top Product</h3>
+                    <p id="top-product"></p>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Predicted Demand</h3>
+                    <p id="predicted-demand"></p>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Risk Analysis</h3>
+                    <p id="risk-analysis"></p>
+                </div>
+
+                <div class="analytics-card">
+                    <h3>Customer Activity</h3>
+                    <p id="active-customers"></p>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="ordersChart"></canvas>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

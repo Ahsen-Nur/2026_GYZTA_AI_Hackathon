@@ -1,0 +1,19 @@
+[
+  {
+    "product": "Apple Magic Keyboard",
+    "stock": 2,
+    "critical": true
+  },
+
+  {
+    "product": "Samsung SSD",
+    "stock": 1,
+    "critical": true
+  },
+
+  {
+    "product": "Anker PowerCore 737",
+    "stock": 12,
+    "critical": false
+  }
+]
