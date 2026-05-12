@@ -76,38 +76,89 @@ async function loadAnalytics() {
 
 async function sendMessage() {
 
-    const input = document.getElementById("message-input");
+    const input =
+        document.getElementById("message-input");
 
-    const message = input.value;
+    const message =
+        input.value.trim();
 
-    const box = document.getElementById("chat-box");
+    if(!message) return;
 
-    box.innerHTML += `
-    <div class="user-message">${message}</div>
-    `;
-
-    const res = await fetch("/chat", {
-
-        method: "POST",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-            message: message
-        })
-    });
-
-    const data = await res.json();
+    const box =
+        document.getElementById("chat-box");
 
     box.innerHTML += `
-    <div class="bot-message">${data.response}</div>
+        <div class="user-message">
+            ${message}
+        </div>
     `;
 
     input.value = "";
 
-    box.scrollTop = box.scrollHeight;
+    const loadingId =
+        "loading-" + Date.now();
+
+    box.innerHTML += `
+
+        <div
+            class="loading-container"
+            id="${loadingId}"
+        >
+
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+
+        </div>
+    `;
+
+    box.scrollTop =
+        box.scrollHeight;
+
+    try{
+
+        const res =
+            await fetch("/chat", {
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+                    message:message
+                })
+            });
+
+        const data =
+            await res.json();
+
+        document
+            .getElementById(loadingId)
+            .remove();
+
+        box.innerHTML += `
+            <div class="bot-message">
+                ${data.response}
+            </div>
+        `;
+
+    }catch(err){
+
+        document
+            .getElementById(loadingId)
+            .remove();
+
+        box.innerHTML += `
+            <div class="bot-message">
+                AI servisine ulaşılamadı.
+            </div>
+        `;
+    }
+
+    box.scrollTop =
+        box.scrollHeight;
 }
 
 function showSection(sectionName) {

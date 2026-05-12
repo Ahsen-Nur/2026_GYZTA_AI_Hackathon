@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="tr">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>AI OPS</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="/static/style.css">
+    <title>AI OPS</title>
+
+    <link rel="stylesheet"
+          href="/static/style.css">
+
+    <link rel="stylesheet"
+          href="/static/loading.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
@@ -18,27 +26,29 @@
 
     <aside class="sidebar">
 
-        <h1>AI OPS</h1>
+        <h1 class="logo">
+            AI OPS
+        </h1>
 
         <nav>
 
             <a class="nav-item active"
-               onclick="showSection('dashboard')">
+               onclick="showSection('dashboard', event)">
                Dashboard
             </a>
 
             <a class="nav-item"
-               onclick="showSection('orders')">
+               onclick="showSection('orders', event)">
                Orders
             </a>
 
             <a class="nav-item"
-               onclick="showSection('inventory')">
+               onclick="showSection('inventory', event)">
                Inventory
             </a>
 
             <a class="nav-item"
-               onclick="showSection('analytics')">
+               onclick="showSection('analytics', event)">
                Analytics
             </a>
 
@@ -50,50 +60,58 @@
 
         <section id="dashboard-section">
 
-            <h1>Operations Dashboard</h1>
+            <h1>
+                Operations Dashboard
+            </h1>
 
             <div class="cards">
 
                 <div class="card gradient">
                     <h3>Today's Orders</h3>
-                    <p id="total-orders"></p>
+                    <p id="total-orders">0</p>
                 </div>
 
                 <div class="card">
                     <h3>Delayed Shipments</h3>
-                    <p id="delayed-orders"></p>
+                    <p id="delayed-orders">0</p>
                 </div>
 
                 <div class="card">
                     <h3>Critical Stock</h3>
-                    <p id="critical-stock"></p>
+                    <p id="critical-stock">0</p>
                 </div>
 
                 <div class="card">
                     <h3>Revenue</h3>
-                    <p id="revenue"></p>
+                    <p id="revenue">0</p>
                 </div>
 
             </div>
 
-            <div class="layout">
+            <div class="dashboard-grid">
 
                 <div class="orders-panel">
 
-                    <h2>Recent Orders</h2>
+                    <h2>
+                        Recent Orders
+                    </h2>
 
                     <table>
 
                         <thead>
+
                         <tr>
                             <th>ID</th>
                             <th>Customer</th>
                             <th>Status</th>
                             <th>City</th>
                         </tr>
+
                         </thead>
 
-                        <tbody id="orders-table"></tbody>
+                        <tbody id="orders-table">
+
+                        </tbody>
 
                     </table>
 
@@ -101,14 +119,21 @@
 
                 <div class="chat-panel">
 
-                    <h2>AI Assistant</h2>
+                    <h2>
+                        AI Assistant
+                    </h2>
 
-                    <div id="chat-box"></div>
+                    <div id="chat-box">
+
+                    </div>
 
                     <div class="chat-input">
 
-                        <input id="message-input"
-                               placeholder="Ask AI assistant...">
+                        <input
+                            type="text"
+                            id="message-input"
+                            placeholder="Mesaj yaz..."
+                        >
 
                         <button onclick="sendMessage()">
                             Send
@@ -122,50 +147,67 @@
 
         </section>
 
-        <section id="orders-section" class="hidden-section">
+        <section id="orders-section"
+                 class="hidden-section">
 
-            <h1>Orders Management</h1>
+            <h1>
+                Orders Management
+            </h1>
 
             <table>
 
                 <thead>
+
                 <tr>
                     <th>ID</th>
                     <th>Customer</th>
                     <th>Product</th>
                     <th>Status</th>
                 </tr>
+
                 </thead>
 
-                <tbody id="orders-management-table"></tbody>
+                <tbody id="orders-management-table">
+
+                </tbody>
 
             </table>
 
         </section>
 
-        <section id="inventory-section" class="hidden-section">
+        <section id="inventory-section"
+                 class="hidden-section">
 
-            <h1>Inventory Management</h1>
+            <h1>
+                Inventory Management
+            </h1>
 
             <table>
 
                 <thead>
+
                 <tr>
                     <th>Product</th>
                     <th>Stock</th>
                     <th>Status</th>
                 </tr>
+
                 </thead>
 
-                <tbody id="inventory-table"></tbody>
+                <tbody id="inventory-table">
+
+                </tbody>
 
             </table>
 
         </section>
 
-        <section id="analytics-section" class="hidden-section">
+        <section id="analytics-section"
+                 class="hidden-section">
 
-            <h1>Analytics Dashboard</h1>
+            <h1>
+                Analytics Dashboard
+            </h1>
 
             <div class="analytics-grid">
 
@@ -189,9 +231,13 @@
                     <p id="active-customers"></p>
                 </div>
 
-                <div class="chart-container">
-                    <canvas id="ordersChart"></canvas>
-                </div>
+            </div>
+
+            <div class="chart-card">
+
+                <canvas id="ordersChart">
+
+                </canvas>
 
             </div>
 
@@ -204,4 +250,5 @@
 <script src="/static/script.js"></script>
 
 </body>
+
 </html>
