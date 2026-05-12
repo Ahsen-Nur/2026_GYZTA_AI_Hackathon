@@ -9,7 +9,11 @@ class Order(Base):
 
     __tablename__ = "orders"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(
+        Integer,
+        primary_key=True,
+        index=True
+    )
 
     customer = Column(String)
 
@@ -23,15 +27,29 @@ class Order(Base):
 
     revenue = Column(Integer)
 
+    shipment_priority = Column(String)
+
+    estimated_delivery = Column(String)
+
+    carrier = Column(String)
+
 
 class Inventory(Base):
 
     __tablename__ = "inventory"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(
+        Integer,
+        primary_key=True,
+        index=True
+    )
 
     product = Column(String)
 
     stock = Column(Integer)
 
     status = Column(String)
+
+    reorder_threshold = Column(Integer)
+
+    warehouse = Column(String)

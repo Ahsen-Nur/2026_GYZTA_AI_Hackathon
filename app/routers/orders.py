@@ -19,15 +19,35 @@ def get_orders():
 
         result.append({
 
-            "id": o.id,
+            "id":
+                o.id,
 
-            "customer": o.customer,
+            "customer":
+                o.customer,
 
-            "product": o.product,
+            "product":
+                o.product,
 
-            "status": o.status,
+            "status":
+                o.status,
 
-            "city": o.city
+            "city":
+                o.city,
+
+            "tracking_number":
+                o.tracking_number,
+
+            "revenue":
+                o.revenue,
+
+            "shipment_priority":
+                o.shipment_priority,
+
+            "estimated_delivery":
+                o.estimated_delivery,
+
+            "carrier":
+                o.carrier
         })
 
     db.close()

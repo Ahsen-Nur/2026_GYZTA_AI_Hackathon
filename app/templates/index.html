@@ -5,139 +5,445 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>AI OPS</title>
+    <title>
+        AI OPS
+    </title>
 
-    <link rel="stylesheet"
-          href="/static/style.css">
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
 
-    <link rel="stylesheet"
-          href="/static/loading.css">
+    <link
+        rel="stylesheet"
+        href="/static/loading.css"
+    >
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
 </head>
 
 <body>
 
+<div class="app-bg"></div>
+
+<!-- ROLE SCREEN -->
+
+<section
+    class="role-screen"
+    id="role-screen"
+>
+
+    <div class="role-content">
+
+        <div class="hero-badge">
+
+            AI DESTEKLİ OPERASYON PLATFORMU
+
+        </div>
+
+        <h1>
+
+            Yapay Zeka Operasyon Merkezi
+
+        </h1>
+
+        <p>
+
+            Sipariş yönetimi,
+            kargo takibi,
+            stok analizi
+            ve yapay zeka destek sistemi
+
+        </p>
+
+        <div class="role-buttons">
+
+            <button
+                class="big-role-btn admin-btn"
+                onclick="enterAdminPanel()"
+            >
+
+                Yönetici Paneli
+
+            </button>
+
+            <button
+                class="big-role-btn customer-btn"
+                onclick="enterCustomerPanel()"
+            >
+
+                Müşteri Paneli
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ADMIN -->
+
+<section
+    id="admin-panel"
+    class="hidden-section"
+>
+
 <div class="dashboard">
+
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
-        <h1 class="logo">
-            AI OPS
-        </h1>
+        <div>
 
-        <nav>
+            <div class="logo-wrapper">
 
-            <a class="nav-item active"
-               onclick="showSection('dashboard', event)">
-               Dashboard
-            </a>
+                <div class="logo-dot"></div>
 
-            <a class="nav-item"
-               onclick="showSection('orders', event)">
-               Orders
-            </a>
+                <h1 class="logo">
 
-            <a class="nav-item"
-               onclick="showSection('inventory', event)">
-               Inventory
-            </a>
+                    AI OPS
 
-            <a class="nav-item"
-               onclick="showSection('analytics', event)">
-               Analytics
-            </a>
+                </h1>
 
-        </nav>
+            </div>
+
+            <p class="logo-subtitle">
+
+                Yapay Zeka Operasyon Merkezi
+
+            </p>
+
+            <nav>
+
+                <a
+                    class="nav-item active"
+                    onclick="showSection('dashboard',event)"
+                >
+
+                    Panel
+
+                </a>
+
+                <a
+                    class="nav-item"
+                    onclick="showSection('orders',event)"
+                >
+
+                    Siparişler
+
+                </a>
+
+                <a
+                    class="nav-item"
+                    onclick="showSection('inventory',event)"
+                >
+
+                    Stok
+
+                </a>
+
+                <a
+                    class="nav-item"
+                    onclick="showSection('analytics',event)"
+                >
+
+                    Analiz
+
+                </a>
+
+                <button
+                    onclick="location.reload()"
+                    class="admin-back-btn"
+                >
+
+                    ← Ana Sayfa
+
+                </button>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-footer">
+
+            <div class="ai-status"></div>
+
+            <div>
+
+                <h4>
+
+                    AI AKTİF
+
+                </h4>
+
+                <p>
+
+                    Operasyon sistemi çalışıyor
+
+                </p>
+
+            </div>
+
+        </div>
 
     </aside>
 
+    <!-- CONTENT -->
+
     <main class="content">
+
+        <!-- DASHBOARD -->
 
         <section id="dashboard-section">
 
-            <h1>
-                Operations Dashboard
-            </h1>
+            <div class="topbar">
+
+                <div>
+
+                    <h1>
+
+                        Operasyon Merkezi
+
+                    </h1>
+
+                    <p>
+
+                        Gerçek zamanlı kargo ve stok takibi
+
+                    </p>
+
+                </div>
+
+                <div class="live-badge">
+
+                    <div class="pulse"></div>
+
+                    SİSTEM AKTİF
+
+                </div>
+
+            </div>
+
+            <!-- KPI -->
 
             <div class="cards">
 
-                <div class="card gradient">
-                    <h3>Today's Orders</h3>
-                    <p id="total-orders">0</p>
+                <div class="card gradient-card">
+
+                    <span class="card-label">
+
+                        Günlük Sipariş
+
+                    </span>
+
+                    <h2 id="total-orders">
+
+                        0
+
+                    </h2>
+
                 </div>
 
                 <div class="card">
-                    <h3>Delayed Shipments</h3>
-                    <p id="delayed-orders">0</p>
+
+                    <span class="card-label">
+
+                        Geciken Gönderi
+
+                    </span>
+
+                    <h2 id="delayed-orders">
+
+                        0
+
+                    </h2>
+
                 </div>
 
                 <div class="card">
-                    <h3>Critical Stock</h3>
-                    <p id="critical-stock">0</p>
+
+                    <span class="card-label">
+
+                        Kritik Stok
+
+                    </span>
+
+                    <h2 id="critical-stock">
+
+                        0
+
+                    </h2>
+
                 </div>
 
                 <div class="card">
-                    <h3>Revenue</h3>
-                    <p id="revenue">0</p>
+
+                    <span class="card-label">
+
+                        Toplam Gelir
+
+                    </span>
+
+                    <h2 id="revenue">
+
+                        ₺0
+
+                    </h2>
+
                 </div>
 
             </div>
+
+            <!-- GRID -->
 
             <div class="dashboard-grid">
 
-                <div class="orders-panel">
+                <!-- LEFT -->
 
-                    <h2>
-                        Recent Orders
-                    </h2>
+                <div class="left-column">
 
-                    <table>
+                    <div class="panel">
 
-                        <thead>
+                        <div class="panel-header">
 
-                        <tr>
-                            <th>ID</th>
-                            <th>Customer</th>
-                            <th>Status</th>
-                            <th>City</th>
-                        </tr>
+                            <h2>
 
-                        </thead>
+                                Operasyon Akışı
 
-                        <tbody id="orders-table">
+                            </h2>
 
-                        </tbody>
+                        </div>
 
-                    </table>
-
-                </div>
-
-                <div class="chat-panel">
-
-                    <h2>
-                        AI Assistant
-                    </h2>
-
-                    <div id="chat-box">
-
-                    </div>
-
-                    <div class="chat-input">
-
-                        <input
-                            type="text"
-                            id="message-input"
-                            placeholder="Mesaj yaz..."
+                        <div
+                            class="operations-feed"
+                            id="operations-feed"
                         >
 
-                        <button onclick="sendMessage()">
-                            Send
-                        </button>
+                        </div>
+
+                    </div>
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <h2>
+
+                                Son Siparişler
+
+                            </h2>
+
+                        </div>
+
+                        <table>
+
+                            <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Müşteri</th>
+                                <th>Durum</th>
+                                <th>Şehir</th>
+
+                            </tr>
+
+                            </thead>
+
+                            <tbody id="orders-table">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT -->
+
+                <div class="right-column">
+
+                    <div class="assistant-panel">
+
+                        <div class="panel-header">
+
+                            <h2>
+
+                                AI Operasyon Asistanı
+
+                            </h2>
+
+                        </div>
+
+                        <div id="chat-box">
+
+                            <div class="bot-message">
+
+                                AI operasyon sistemi aktif.
+
+                            </div>
+
+                        </div>
+
+                        <div class="chat-input">
+
+                            <input
+                                type="text"
+                                id="message-input"
+                                placeholder="AI sistemine komut ver..."
+                            >
+
+                            <button onclick="sendMessage()">
+
+                                Gönder
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <h2>
+
+                                AI İçgörüleri
+
+                            </h2>
+
+                        </div>
+
+                        <div
+                            class="insights"
+                            id="insights-container"
+                        >
+
+                        </div>
 
                     </div>
 
@@ -147,97 +453,153 @@
 
         </section>
 
-        <section id="orders-section"
-                 class="hidden-section">
+        <!-- ORDERS -->
 
-            <h1>
-                Orders Management
-            </h1>
+        <section
+            id="orders-section"
+            class="hidden-section"
+        >
 
-            <table>
+            <div class="topbar">
 
-                <thead>
+                <div>
 
-                <tr>
-                    <th>ID</th>
-                    <th>Customer</th>
-                    <th>Product</th>
-                    <th>Status</th>
-                </tr>
+                    <h1>
 
-                </thead>
+                        Sipariş Yönetimi
 
-                <tbody id="orders-management-table">
+                    </h1>
 
-                </tbody>
+                    <p>
 
-            </table>
+                        Tüm sipariş operasyonları
 
-        </section>
+                    </p>
 
-        <section id="inventory-section"
-                 class="hidden-section">
-
-            <h1>
-                Inventory Management
-            </h1>
-
-            <table>
-
-                <thead>
-
-                <tr>
-                    <th>Product</th>
-                    <th>Stock</th>
-                    <th>Status</th>
-                </tr>
-
-                </thead>
-
-                <tbody id="inventory-table">
-
-                </tbody>
-
-            </table>
-
-        </section>
-
-        <section id="analytics-section"
-                 class="hidden-section">
-
-            <h1>
-                Analytics Dashboard
-            </h1>
-
-            <div class="analytics-grid">
-
-                <div class="analytics-card">
-                    <h3>Top Product</h3>
-                    <p id="top-product"></p>
-                </div>
-
-                <div class="analytics-card">
-                    <h3>Predicted Demand</h3>
-                    <p id="predicted-demand"></p>
-                </div>
-
-                <div class="analytics-card">
-                    <h3>Risk Analysis</h3>
-                    <p id="risk-analysis"></p>
-                </div>
-
-                <div class="analytics-card">
-                    <h3>Customer Activity</h3>
-                    <p id="active-customers"></p>
                 </div>
 
             </div>
 
-            <div class="chart-card">
+            <div class="panel">
 
-                <canvas id="ordersChart">
+                <table>
 
-                </canvas>
+                    <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Müşteri</th>
+                        <th>Ürün</th>
+                        <th>Durum</th>
+                        <th>Şehir</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody id="all-orders-table">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- INVENTORY -->
+
+        <section
+            id="inventory-section"
+            class="hidden-section"
+        >
+
+            <div class="topbar">
+
+                <div>
+
+                    <h1>
+
+                        Stok Yönetimi
+
+                    </h1>
+
+                    <p>
+
+                        Kritik stok takibi
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                class="cards"
+                id="inventory-cards"
+            >
+
+            </div>
+
+        </section>
+
+        <!-- ANALYTICS -->
+
+        <section
+            id="analytics-section"
+            class="hidden-section"
+        >
+
+            <div class="topbar">
+
+                <div>
+
+                    <h1>
+
+                        Operasyon Analizi
+
+                    </h1>
+
+                    <p>
+
+                        Yapay zeka analiz sonuçları
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <span class="card-label">
+
+                        En Çok Satan Ürün
+
+                    </span>
+
+                    <h2 id="top-product">
+
+                    </h2>
+
+                </div>
+
+                <div class="card">
+
+                    <span class="card-label">
+
+                        Risk Analizi
+
+                    </span>
+
+                    <h2 id="risk-orders">
+
+                    </h2>
+
+                </div>
 
             </div>
 
@@ -246,6 +608,79 @@
     </main>
 
 </div>
+
+</section>
+
+<!-- CUSTOMER -->
+
+<section
+    id="customer-panel"
+    class="hidden-section"
+>
+
+<div class="customer-layout">
+
+    <div class="customer-box">
+
+        <button
+            onclick="location.reload()"
+            class="back-btn"
+        >
+
+            ← Ana Sayfa
+
+        </button>
+
+        <h1>
+
+            Sipariş Destek Merkezi
+
+        </h1>
+
+        <p>
+
+            Sipariş numarası,
+            müşteri adı
+            veya ürün adı girin
+
+        </p>
+
+        <div
+            class="customer-chat"
+            id="customer-chat"
+        >
+
+            <div class="bot-message">
+
+                Merhaba.
+                Sipariş durumunuzu öğrenmek için
+                mesaj gönderebilirsiniz.
+
+            </div>
+
+        </div>
+
+        <div class="chat-input">
+
+            <input
+                type="text"
+                id="customer-message"
+                placeholder="Mesaj yaz..."
+            >
+
+            <button onclick="sendCustomerMessage()">
+
+                Gönder
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
 
 <script src="/static/script.js"></script>
 

@@ -9,81 +9,64 @@ OPENROUTER_API_KEY = os.getenv(
     "OPENROUTER_API_KEY"
 )
 
-URL = "https://openrouter.ai/api/v1/chat/completions"
-
-HEADERS = {
-
-    "Authorization":
-        f"Bearer {OPENROUTER_API_KEY}",
-
-    "Content-Type":
-        "application/json"
-}
+MODEL = "google/gemini-2.0-flash-001"
 
 
-def ask_ai(message, orders):
+def ask_ai(prompt):
 
-    context = "\n".join([
+    try:
 
-        f"""
-Müşteri: {o.customer}
-Ürün: {o.product}
-Durum: {o.status}
-Takip Numarası: {o.tracking_number}
-Şehir: {o.city}
-"""
-        for o in orders
-    ])
+        response = requests.post(
 
-    prompt = f"""
+            "https://openrouter.ai/api/v1/chat/completions",
 
-Sen Türkçe konuşan profesyonel bir AI operasyon asistanısın.
+            headers={
 
-ASLA İngilizce konuşma.
+                "Authorization":
+                    f"Bearer {OPENROUTER_API_KEY}",
 
-Görevlerin:
-- sipariş takibi
-- müşteri destek
-- stok yönetimi
-- kargo operasyonu
-- shipment automation
-
-Gerçek sipariş verileri:
-
-{context}
-
-Kullanıcı mesajı:
-{message}
-
-Kısa, profesyonel ve doğal cevap ver.
-"""
-
-    body = {
-
-        "model":
-            "openai/gpt-4o-mini",
-
-        "messages": [
-
-            {
-                "role": "system",
-                "content":
-                    "Her zaman Türkçe cevap ver."
+                "Content-Type":
+                    "application/json"
             },
 
-            {
-                "role": "user",
-                "content": prompt
+            json={
+
+                "model": MODEL,
+
+                "messages": [
+
+                    {
+                        "role": "system",
+
+                        "content": """
+
+Sen profesyonel bir yapay zeka operasyon asistanısın.
+
+Kurallar:
+
+- Her zaman Türkçe konuş
+- Doğal konuş
+- İnsan gibi cevap ver
+- Aynı cevabı tekrar etme
+- Kısa ama açıklayıcı ol
+- Gereksiz teknik detay verme
+"""
+                    },
+
+                    {
+                        "role": "user",
+
+                        "content": prompt
+                    }
+                ]
             }
-        ]
-    }
 
-    response = requests.post(
-        URL,
-        headers=HEADERS,
-        json=body
-    )
+        )
 
-    data = response.json()
+        data = response.json()
 
-    return data["choices"][0]["message"]["content"]
+        return data["choices"][0]["message"]["content"]
+
+    except Exception as e:
+
+        return f"AI sistem hatası oluştu: {str(e)}"

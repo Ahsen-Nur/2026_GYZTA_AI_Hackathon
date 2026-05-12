@@ -1,9 +1,12 @@
 from fastapi import APIRouter
 
 from app.database import SessionLocal
+
 from app.models import Order
 
-from app.services.analytics_service import generate_analytics
+from app.services.analytics_service import (
+    generate_analytics
+)
 
 router = APIRouter()
 
@@ -15,8 +18,10 @@ def analytics():
 
     orders = db.query(Order).all()
 
-    result = generate_analytics(orders)
+    analytics_data = generate_analytics(
+        orders
+    )
 
     db.close()
 
-    return result
+    return analytics_data

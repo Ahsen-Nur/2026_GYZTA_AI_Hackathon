@@ -4,7 +4,9 @@ from pydantic import BaseModel
 from app.database import SessionLocal
 from app.models import Order
 
-from app.services.openrouter_service import ask_ai
+from app.services.openrouter_service import (
+    ask_ai
+)
 
 router = APIRouter()
 
@@ -21,7 +23,8 @@ def chat(req: ChatRequest):
 
     orders = db.query(Order).all()
 
-    response = ask_ai(
+    ai_response = ask_ai(
+
         req.message,
         orders
     )
@@ -31,5 +34,5 @@ def chat(req: ChatRequest):
     return {
 
         "response":
-            response
+            ai_response
     }

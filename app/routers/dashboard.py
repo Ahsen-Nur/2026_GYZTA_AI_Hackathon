@@ -5,8 +5,13 @@ from app.database import SessionLocal
 from app.models import Order
 from app.models import Inventory
 
-from app.services.analytics_service import generate_analytics
-from app.services.insight_service import generate_insights
+from app.services.analytics_service import (
+    generate_analytics
+)
+
+from app.services.insight_service import (
+    generate_insights
+)
 
 router = APIRouter()
 
@@ -17,23 +22,28 @@ def dashboard():
     db = SessionLocal()
 
     orders = db.query(Order).all()
+
     inventory = db.query(Inventory).all()
 
-    analytics = generate_analytics(orders)
+    analytics = generate_analytics(
+        orders
+    )
 
     insights = generate_insights(
         orders,
         inventory
     )
 
-    delayed = len([
+    delayed_orders = len([
+
         o for o in orders
         if o.status == "Delayed"
     ])
 
-    critical = len([
+    critical_stock = len([
+
         i for i in inventory
-        if i.stock < 5
+        if i.stock <= 5
     ])
 
     response = {
@@ -42,16 +52,22 @@ def dashboard():
             len(orders),
 
         "delayed_orders":
-            delayed,
+            delayed_orders,
 
         "critical_stock":
-            critical,
+            critical_stock,
 
         "revenue":
             analytics["revenue"],
 
         "insights":
-            insights
+            insights,
+
+        "top_city":
+            analytics["top_city"],
+
+        "delayed_count":
+            analytics["delayed_count"]
     }
 
     db.close()

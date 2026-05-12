@@ -19,11 +19,20 @@ def inventory():
 
         result.append({
 
-            "product": i.product,
+            "product":
+                i.product,
 
-            "stock": i.stock,
+            "stock":
+                i.stock,
 
-            "status": i.status
+            "status":
+                i.status,
+
+            "reorder_threshold":
+                i.reorder_threshold,
+
+            "warehouse":
+                i.warehouse
         })
 
     db.close()
