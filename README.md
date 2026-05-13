@@ -17,7 +17,6 @@ Hackathon sürecinde geliştirilen bu sistem; gerçek operasyon senaryolarına y
 - [OpenRouter API Ayarı](#openrouter-api-ayarı)
 - [Veritabanını Oluşturma](#veritabanını-oluşturma)
 - [Projeyi Çalıştırma](#projeyi-çalıştırma)
-- [API Endpointleri](#api-endpointleri)
 - [AI Sistemleri](#ai-sistemleri)
 - [Ekranlar](#ekranlar)
 - [Gelecek Geliştirmeler](#gelecek-geliştirmeler)
@@ -155,33 +154,6 @@ Arayüz tarafında:
 - responsive yapı
 
 kullanılmıştır.
-
----
-
-## Glassmorphism Tasarım
-
-Projede modern “glassmorphism” yaklaşımı uygulanmıştır.
-
-Bu yaklaşım:
-
-- yarı saydam paneller,
-- cam hissi veren blur efektleri,
-- yumuşak ışık geçişleri,
-- transparan katmanlar
-
-oluşturur.
-
-Kullanılan bazı temel CSS teknikleri:
-
-```css
-backdrop-filter: blur(18px);
-
-background: rgba(10,15,35,.82);
-
-border: 1px solid rgba(255,255,255,.06);
-```
-
-Bu yapı sayesinde dashboard daha modern, premium ve canlı bir operasyon merkezi hissi vermektedir.
 
 ---
 
@@ -370,55 +342,6 @@ uvicorn app.main:app --reload
 http://127.0.0.1:8000
 ```
 
----
-
-# API Endpointleri
-
-## Dashboard
-
-```http
-GET /dashboard
-```
-
----
-
-## Siparişler
-
-```http
-GET /orders
-```
-
----
-
-## Inventory
-
-```http
-GET /inventory
-```
-
----
-
-## Analytics
-
-```http
-GET /analytics
-```
-
----
-
-## Admin AI Chat
-
-```http
-POST /chat
-```
-
----
-
-## Customer AI Chat
-
-```http
-POST /customer-chat
-```
 
 ---
 
