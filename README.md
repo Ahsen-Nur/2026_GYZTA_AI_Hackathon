@@ -1,6 +1,5 @@
-# AI Operations Command Center
+# AI Order Assistant
 
-AI destekli operasyon yönetim platformu.  
 Bu proje; sipariş yönetimi, stok takibi, operasyon analizi ve yapay zeka destekli müşteri iletişimini tek merkezde birleştiren modern bir operasyon panelidir.
 
 Hackathon sürecinde geliştirilen bu sistem; gerçek operasyon senaryolarına yakın bir mimari ile tasarlanmıştır ve aktif olarak geliştirilmeye devam etmektedir.
@@ -28,7 +27,7 @@ Hackathon sürecinde geliştirilen bu sistem; gerçek operasyon senaryolarına y
 
 # Proje Özeti
 
-AI Operations Command Center;
+AI Order Assistant;
 
 - sipariş yönetimi,
 - kargo takibi,
